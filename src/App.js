@@ -1,5 +1,30 @@
+import React, { useEffect, useState } from "react";
+
 function App() {
-  return <h1>Hello World</h1>;
+  const [user, setUser] = useState([]);
+
+  const fetchData = () => {
+    fetch("https://backend-february-1.vercel.app/", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setUser(data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <h1>Username:</h1>
+      <p>name: {user.name}</p>
+      <p>age: {user.age}</p>
+    </>
+  );
 }
 
 export default App;
