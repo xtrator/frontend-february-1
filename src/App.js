@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import Gallery from "./Gallery";
 import { people } from "./people";
 import { getImageURL } from "./utils";
+import { useImmer } from "use-immer";
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [user, updateUser] = useImmer([]);
 
   const fetchData = () => {
     fetch("https://backend-february-1.vercel.app/")
       .then((response) => response.json())
-      .then((data) => setUser(data));
+      .then((data) => updateUser(data));
   };
 
   useEffect(() => {
