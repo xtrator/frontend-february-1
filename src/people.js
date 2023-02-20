@@ -1,4 +1,6 @@
-export const people = [
+import { getImageURL } from "./utils";
+
+const people = [
   {
     id: 0, // Used in JSX as a key
     name: "Creola Katherine Johnson",
@@ -36,3 +38,26 @@ export const people = [
     imageId: "lrWQx8l",
   },
 ];
+
+export default function People() {
+  const chemists = people.filter((person) => person.profession == "chemist");
+  return (
+    <>
+      <h1>People</h1>
+      <ol>
+        {chemists.map((person) => {
+          return (
+            <li key={person.id}>
+              <img src={getImageURL(person.imageId)} alt={person.name} />
+              <p>
+                <b>{person.name}</b>
+                {" " + person.profession + " "}
+                known for {person.accomplishment}
+              </p>
+            </li>
+          );
+        })}
+      </ol>
+    </>
+  );
+}

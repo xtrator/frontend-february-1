@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Gallery from "./Gallery";
-import { people } from "./people";
-import { getImageURL } from "./utils";
+import User from "./User";
+import People from "./People";
 import { useImmer } from "use-immer";
+import Counter from "./Counter";
 
 function App() {
   const [user, updateUser] = useImmer([]);
-  const [count, updateCount] = useImmer(0);
 
   const fetchData = () => {
     fetch("https://backend-february-1.vercel.app/")
@@ -18,46 +18,14 @@ function App() {
     fetchData();
   }, []);
 
-  const chemists = people.filter((person) => person.profession == "chemist");
-
-  async function handleClick() {
-    updateCount((c) => c + 1);
-    await delay(3000);
-    updateCount((c) => c - 1);
-  }
-
   return (
     <>
-      <h1>Username:</h1>
-      <p>name: {user.name}</p>
-      <p>age: {user.age}</p>
+      <User user={user}></User>
       <Gallery />
-      <h1>People</h1>
-      <ol>
-        {chemists.map((person) => {
-          return (
-            <li key={person.id}>
-              <img src={getImageURL(person.imageId)} alt={person.name} />
-              <p>
-                <b>{person.name}</b>
-                {" " + person.profession + " "}
-                known for {person.accomplishment}
-              </p>
-            </li>
-          );
-        })}
-      </ol>
-      <hr />
-      <button onClick={handleClick}>Increase Count Momentarily</button>
-      <p>Current count is {count}</p>
+      <People></People>
+      <Counter></Counter>
     </>
   );
-}
-
-function delay(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
 }
 
 export default App;
