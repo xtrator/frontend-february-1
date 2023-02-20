@@ -1,15 +1,11 @@
 import { useContext } from "react";
 import { PageContext } from "./PageContext";
 import { people as peopleList } from "./people-data";
-import { useImmer } from "use-immer";
+import { useImmerReducer } from "use-immer";
 
-export default function PeopleList() {
-  let [people, updatePeople] = useImmer(peopleList);
-  let page = useContext(PageContext);
-  if (page != 2) return null;
-
-  function handleAdd() {
-    updatePeople((draft) => {
+function peopleReducer(draft, action) {
+  switch (action.type) {
+    case "add":
       draft.push({
         id: draft[draft.length],
         name: "Creola Katherine Johnson",
@@ -17,17 +13,11 @@ export default function PeopleList() {
         accomplishment: "spaceflight calculations",
         imageId: "MK3eW3A",
       });
-    });
-  }
-
-  function handleDelete() {
-    updatePeople((draft) => {
+      break;
+    case "delete":
       draft.pop();
-    });
-  }
-
-  function handleEdit() {
-    updatePeople((draft) => {
+      break;
+    case "edit":
       draft[draft.length - 1] = {
         id: 1,
         name: "Mario José Molina-Pasquel Henríquez",
@@ -35,6 +25,32 @@ export default function PeopleList() {
         accomplishment: "discovery of Arctic ozone hole",
         imageId: "mynHUSa",
       };
+      break;
+    default:
+      throw Error("Unknown action: " + action.type);
+  }
+}
+
+export default function PeopleList() {
+  let [people, dispatch] = useImmerReducer(peopleReducer, peopleList);
+  let page = useContext(PageContext);
+  if (page != 2) return null;
+
+  function handleAdd() {
+    dispatch({
+      type: "add",
+    });
+  }
+
+  function handleDelete() {
+    dispatch({
+      type: "delete",
+    });
+  }
+
+  function handleEdit() {
+    dispatch({
+      type: "edit",
     });
   }
 
