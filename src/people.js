@@ -1,29 +1,31 @@
 import { getImageURL } from "./utils";
+import { useContext } from "react";
+import { PageContext } from "./PageContext";
 
 const people = [
   {
-    id: 0, // Used in JSX as a key
+    id: 0,
     name: "Creola Katherine Johnson",
     profession: "mathematician",
     accomplishment: "spaceflight calculations",
     imageId: "MK3eW3A",
   },
   {
-    id: 1, // Used in JSX as a key
+    id: 1,
     name: "Mario José Molina-Pasquel Henríquez",
     profession: "chemist",
     accomplishment: "discovery of Arctic ozone hole",
     imageId: "mynHUSa",
   },
   {
-    id: 2, // Used in JSX as a key
+    id: 2,
     name: "Mohammad Abdus Salam",
     profession: "physicist",
     accomplishment: "electromagnetism theory",
     imageId: "bE7W1ji",
   },
   {
-    id: 3, // Used in JSX as a key
+    id: 3,
     name: "Percy Lavon Julian",
     profession: "chemist",
     accomplishment:
@@ -31,7 +33,7 @@ const people = [
     imageId: "IOjWm71",
   },
   {
-    id: 4, // Used in JSX as a key
+    id: 4,
     name: "Subrahmanyan Chandrasekhar",
     profession: "astrophysicist",
     accomplishment: "white dwarf star mass calculations",
@@ -40,6 +42,8 @@ const people = [
 ];
 
 export default function People() {
+  let page = useContext(PageContext);
+  if (page != 1) return <></>;
   const chemists = people.filter((person) => person.profession == "chemist");
   return (
     <>

@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { PageContext } from "./PageContext.js";
 import { getImageURL } from "./utils.js";
 
 export default function Gallery() {
+  let page = useContext(PageContext);
+  if (page != 1) return <></>;
   return (
     <div>
       <h1>Notable Scientists</h1>
