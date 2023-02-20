@@ -6,6 +6,7 @@ import { useImmer } from "use-immer";
 import Counter from "./Counter";
 import { PageContext } from "./PageContext";
 import PageButtons from "./PageButtons";
+import PeopleList from "./PeopleList";
 
 function App() {
   const [user, updateUser] = useImmer([]);
@@ -29,6 +30,7 @@ function App() {
         <Gallery />
         <People></People>
         <Counter></Counter>
+        <PeopleList></PeopleList>
       </PageContext.Provider>
     </>
   );
