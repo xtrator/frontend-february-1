@@ -28,7 +28,7 @@ function peopleReducer(draft, action) {
   switch (action.type) {
     case "add":
       draft.push({
-        id: draft[draft.length],
+        id: draft.length,
         name: "Creola Katherine Johnson",
         profession: "mathematician",
         accomplishment: "spaceflight calculations",
