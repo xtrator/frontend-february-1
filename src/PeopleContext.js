@@ -1,7 +1,6 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useImmerReducer } from "use-immer";
 import { people as peopleList } from "./people-data";
-import { useContext } from "react";
 
 export const PeopleContext = createContext(null);
 export const PeopleDispatchContext = createContext(null);

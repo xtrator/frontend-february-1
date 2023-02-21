@@ -10,8 +10,8 @@ export default function Counter() {
     await delay(3000);
     updateCount((c) => c - 1);
   }
-  let page = useContext(PageContext);
-  if (page != 1) return <></>;
+  const page = useContext(PageContext);
+  if (page !== 1) return <></>;
   return (
     <>
       <hr />

@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { PageContext } from "./PageContext";
 
 export default function User({ user }) {
-  let page = useContext(PageContext);
-  if (page != 1) return <></>;
+  const page = useContext(PageContext);
+  if (page !== 1) return <></>;
   return (
     <>
       <h1>Username:</h1>

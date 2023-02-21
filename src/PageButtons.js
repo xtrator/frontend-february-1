@@ -1,6 +1,6 @@
 export default function PageButtons({ page, setPage }) {
   function onClick() {
-    setPage(page == 1 ? 2 : 1);
+    setPage(page === 1 ? 2 : 1);
   }
   return (
     <>

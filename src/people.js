@@ -4,8 +4,8 @@ import { PageContext } from "./PageContext";
 import { people } from "./people-data";
 
 export default function People() {
-  let page = useContext(PageContext);
-  if (page != 1) return <></>;
+  const page = useContext(PageContext);
+  if (page !== 1) return <></>;
   const chemists = people.filter((person) => person.profession == "chemist");
   return (
     <>

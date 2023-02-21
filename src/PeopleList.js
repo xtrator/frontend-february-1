@@ -5,8 +5,8 @@ import ActionButtons from "./ActionButtons";
 import { PeopleProvider } from "./PeopleContext"; // logic here
 
 export default function PeopleList() {
-  let page = useContext(PageContext);
-  if (page != 2) return null;
+  const page = useContext(PageContext);
+  if (page !== 2) return null;
 
   return (
     <>

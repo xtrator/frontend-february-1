@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Gallery from "./Gallery";
 import User from "./User";
 import People from "./People";
