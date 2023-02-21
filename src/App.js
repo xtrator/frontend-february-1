@@ -7,6 +7,7 @@ import Counter from "./Counter";
 import { PageContext } from "./PageContext";
 import PageButtons from "./PageButtons";
 import PeopleList from "./PeopleList";
+import Stopwatch from "./Stopwatch";
 
 function App() {
   const [user, updateUser] = useImmer([]);
@@ -31,6 +32,7 @@ function App() {
         <People></People>
         <Counter></Counter>
         <PeopleList></PeopleList>
+        <Stopwatch />
       </PageContext.Provider>
     </>
   );
