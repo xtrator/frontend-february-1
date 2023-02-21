@@ -6,7 +6,7 @@ import { people } from "./people-data";
 export default function People() {
   const page = useContext(PageContext);
   if (page !== 1) return <></>;
-  const chemists = people.filter((person) => person.profession == "chemist");
+  const chemists = people.filter((person) => person.profession === "chemist");
   return (
     <>
       <h1>People</h1>
