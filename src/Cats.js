@@ -29,15 +29,16 @@ export default function Cats() {
       <hr></hr>
       <hr></hr>
       <hr></hr>
-      <nav>
+      <nav style={styleNav}>
         <button onClick={() => scrollToId(1)}>Pulga</button>
         <button onClick={() => scrollToId(5)}>Mocca</button>
         <button onClick={() => scrollToId(9)}>Gary</button>
       </nav>
-      <ul>
+      <ul style={styleObjUl}>
         {catList.map((cat) => {
           return (
             <li
+              style={styleObjLi}
               key={cat.id}
               ref={(node) => {
                 const map = getMap(cat.id, node);
@@ -54,6 +55,25 @@ export default function Cats() {
     </div>
   );
 }
+const styleObjUl = {
+  boxSizing: "border-box",
+  paddingLeft: "20px",
+  listStyle: "none",
+  whiteSpace: "nowrap",
+};
+
+const styleObjLi = {
+  boxSizing: "border-box",
+  listStyle: "none",
+  whiteSpace: "nowrap",
+  display: "inline",
+  padding: "0.5rem",
+};
+
+const styleNav = {
+  textAlign: "center",
+  boxSizing: "border-box",
+};
 
 const catList = [];
 for (let i = 0; i < 10; i++) {
