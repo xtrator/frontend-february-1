@@ -9,6 +9,7 @@ import PageButtons from "./PageButtons";
 import PeopleList from "./PeopleList";
 import Stopwatch from "./Stopwatch";
 import Cats from "./Cats";
+import Form from "./Form";
 
 function App() {
   const [user, updateUser] = useImmer([]);
@@ -35,6 +36,7 @@ function App() {
         <PeopleList></PeopleList>
         <Stopwatch />
         <Cats />
+        <Form />
       </PageContext.Provider>
     </>
   );
