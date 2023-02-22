@@ -16,7 +16,6 @@ export default function Cats() {
   function scrollToId(catId) {
     const map = getMap();
     const node = map.get(catId);
-    console.log(node);
     node.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
