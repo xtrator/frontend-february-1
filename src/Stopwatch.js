@@ -2,9 +2,6 @@ import { useContext, useState, useRef } from "react";
 import { PageContext } from "./PageContext";
 
 export default function Stopwatch() {
-  const page = useContext(PageContext);
-  if (page !== 2) return <></>;
-
   const [startTime, setStartTime] = useState(Date.now());
   const [stopTime, setStopTime] = useState(Date.now());
   const intervalRef = useRef(null);
@@ -18,6 +15,9 @@ export default function Stopwatch() {
       setStartTime(Date.now());
     }, 10);
   }
+
+  const page = useContext(PageContext);
+  if (page !== 2) return <></>;
 
   function handleStop() {
     clearInterval(intervalRef.current);
